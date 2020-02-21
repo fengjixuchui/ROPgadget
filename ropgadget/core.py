@@ -101,6 +101,9 @@ class Core(cmd.Cmd):
         if self.__checksBeforeManipulations() == False:
             return False
 
+        if self.__options.silent:
+            return True
+
         arch = self.__binary.getArchMode()
         print("Gadgets information\n============================================================")
         for gadget in self.__gadgets:
@@ -119,6 +122,9 @@ class Core(cmd.Cmd):
 
         if self.__checksBeforeManipulations() == False:
             return False
+
+        if self.__options.silent:
+            return True
 
         dataSections = self.__binary.getDataSections()
         arch = self.__binary.getArchMode()
@@ -140,6 +146,9 @@ class Core(cmd.Cmd):
         if self.__checksBeforeManipulations() == False:
             return False
 
+        if self.__options.silent:
+            return True
+
         execSections = self.__binary.getExecSections()
         arch = self.__binary.getArchMode()
         print("Opcodes information\n============================================================")
@@ -156,6 +165,9 @@ class Core(cmd.Cmd):
     def __lookingForMemStr(self, memstr):
         if self.__checksBeforeManipulations() == False:
             return False
+
+        if self.__options.silent:
+            return True
 
         sections  = self.__binary.getExecSections()
         sections += self.__binary.getDataSections()
